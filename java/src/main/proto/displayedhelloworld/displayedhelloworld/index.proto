@@ -1,0 +1,25 @@
+syntax = "proto3";
+package displayedhelloworld.displayedhelloworld;
+
+import "displayedhelloworld/input/index.proto";
+import "displayedhelloworld/output/index.proto";
+
+option java_multiple_files = true;
+
+service ToIsDisplayedHelloWorld { rpc Produce (NotDisplayedHelloWorld) returns (IsDisplayedHelloWorld) {} }
+
+message IsDisplayedHelloWorld {
+
+    NotDisplayedHelloWorld not = 1;
+
+    .displayedhelloworld.input.NotInput not_input = 1000000;
+    .displayedhelloworld.output.IsOutput is_output = 1000001;
+}
+
+message NotDisplayedHelloWorld {
+
+    IsDisplayedHelloWorld is = 1;
+
+    .displayedhelloworld.input.IsInput is_input = 1000000;
+    .displayedhelloworld.output.NotOutput not_output = 1000001;
+}

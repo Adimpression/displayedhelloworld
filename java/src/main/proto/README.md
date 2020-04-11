@@ -1,0 +1,3 @@
+- This directory merely follows instructions here: https://github.com/grpc/grpc-java#generated-code
+- The .proto here is from here: https://github.com/Adimpression/proto
+- The .proto files were auto generated when following this tutorial: https://github.com/Adimpression/Learning

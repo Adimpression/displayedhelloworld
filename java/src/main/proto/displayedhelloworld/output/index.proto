@@ -1,0 +1,21 @@
+syntax = "proto3";
+package displayedhelloworld.output;
+
+
+option java_multiple_files = true;
+
+service ToIsOutput { rpc Produce (NotOutput) returns (IsOutput) {} }
+
+message IsOutput {
+
+    NotOutput not = 1;
+
+    string is_display_string = 2000000;
+}
+
+message NotOutput {
+
+    IsOutput is = 1;
+
+    string not_display_string = 2000000;
+}
