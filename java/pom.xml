@@ -39,6 +39,13 @@
             <artifactId>javax.annotation-api</artifactId>
             <version>1.2</version>
         </dependency>
+        <!-- https://testng.org/doc/maven.html-->
+        <dependency>
+            <groupId>org.testng</groupId>
+            <artifactId>testng</artifactId>
+            <version>6.8</version>
+            <scope>test</scope>
+        </dependency>
     </dependencies>
 
     <build>
@@ -67,6 +74,28 @@
                         </goals>
                     </execution>
                 </executions>
+            </plugin>
+            <!-- So that we can run our main method with all our dependencies included. That's all this serves as. -->
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>2.2.2.RELEASE</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                        <configuration>
+                            <classifier>spring-boot</classifier>
+                            <!-- This is our main class which points to the gRPC service we are supposed to implement. -->
+                            <mainClass>displayedhelloworld.displayedhelloworld.ToIsDisplayedHelloWorldImplBaseImpl</mainClass>
+                        </configuration>
+                    </execution>
+                </executions>
+                <configuration>
+                    <addResources>false</addResources>
+                    <finalName>run</finalName>
+                </configuration>
             </plugin>
         </plugins>
     </build>
